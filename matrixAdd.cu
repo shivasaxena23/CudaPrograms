@@ -82,6 +82,11 @@ int main( int argc, char *argv[] ) {
 	*/
 
 	int noElems = (nx)*(ny+my) ;
+	/*
+	if (nx%32 == 0){ 
+		noElems = (nx+1)*(ny) ;
+        }
+	*/
 	int bytes = noElems * sizeof(float) ;
 	//printf ("%d %d %d %d \n",(nx*ny),(noElems),mx,my);	
 
@@ -145,7 +150,9 @@ int main( int argc, char *argv[] ) {
 	if (flag == 0){
 		printf("%.6f %.6f %.6f %.6f\n",(timeStampD-timeStampA),(timeStampB-timeStampA),(timeStampC-timeStampB),(timeStampD-timeStampC));
 	}
-	
+	else{
+		printf("Not eq");
+	}
 	
 	//free other resourses
 	cudaFreeHost(h_Ap); cudaFreeHost(h_Bp);	cudaFreeHost(h_dCp);
